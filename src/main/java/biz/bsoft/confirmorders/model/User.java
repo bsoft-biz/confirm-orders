@@ -1,4 +1,4 @@
-package biz.bsoft.confirmorders;
+package biz.bsoft.confirmorders.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

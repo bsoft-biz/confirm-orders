@@ -1,5 +1,7 @@
 package biz.bsoft.confirmorders;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import org.springframework.http.HttpAuthentication;
@@ -12,7 +14,7 @@ import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.stream.Collectors;
+import biz.bsoft.confirmorders.model.User;
 
 /**
  * Created by vbabin on 24.08.2016.
@@ -59,7 +61,9 @@ public class OrderRestTemplate {
 
     public static User auth(String username, String password) {
         try {
-            String url = "https://www.tirhleb.com/orders/users/user";
+            SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(App.getContext());
+            String serverUrl = SP.getString("server_url", "NA");
+            String url = serverUrl+"/users/user";
             // Set the username and password for creating a Basic Auth request
             HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
             requestHeaders.setAuthorization(authHeader);
@@ -75,7 +79,7 @@ public class OrderRestTemplate {
             return user;
         } catch (HttpClientErrorException e) {
             // Handle 401 Unauthorized response
-            Log.e("Orders 401!", e.getLocalizedMessage(), e);
+            Log.e("Orders 403!", e.getLocalizedMessage(), e);
             //throw new RuntimeException(e.getLocalizedMessage());
         }
         catch (Exception e) {

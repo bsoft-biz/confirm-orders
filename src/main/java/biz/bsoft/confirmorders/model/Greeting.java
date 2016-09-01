@@ -1,4 +1,4 @@
-package biz.bsoft.confirmorders;
+package biz.bsoft.confirmorders.model;
 
 /**
  * Created by vbabin on 24.08.2016.

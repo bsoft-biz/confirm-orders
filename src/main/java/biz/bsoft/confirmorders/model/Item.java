@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Item {
     private String ItemName;
+    private boolean selected;
 
     public String getItemName() {
         return ItemName;
@@ -15,5 +16,13 @@ public class Item {
 
     public void setItemName(String itemName) {
         this.ItemName = itemName;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }

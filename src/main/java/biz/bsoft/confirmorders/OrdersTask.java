@@ -2,19 +2,9 @@ package biz.bsoft.confirmorders;
 
 import android.app.Activity;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.TextView;
 
-import org.springframework.http.HttpAuthentication;
-import org.springframework.http.HttpBasicAuthentication;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
+import biz.bsoft.confirmorders.model.User;
 
 /**
  * Created by vbabin on 24.08.2016.
@@ -72,11 +62,11 @@ public class OrdersTask extends AsyncTask<Void, Void, User> {
 
     @Override
     protected void onPostExecute(User user) {
-        if (user != null)
+        /*if (user != null)
         {
             TextView greetingContentText = (TextView) mainActivity.findViewById(R.id.content_value);
             greetingContentText.setText(user.getName());
-        }
+        }*/
     }
 
 }
