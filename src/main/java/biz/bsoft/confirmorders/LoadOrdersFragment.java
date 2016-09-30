@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import biz.bsoft.confirmorders.model.Order;
@@ -84,18 +85,21 @@ public class LoadOrdersFragment extends Fragment{
                 RestTemplate restTemplate = OrderRestTemplate.getInstance();
                 //HttpHeaders requestHeaders = new HttpHeaders();
                 HttpEntity<?> requestEntity = new HttpEntity<Object>(requestHeaders);
+                //ResponseEntity<String> resp = restTemplate.exchange(url, HttpMethod.GET, requestEntity, String.class);
+                //Log.e("response.getBody()",resp.getBody());
                 ResponseEntity<List<Order>> response = restTemplate.exchange(url, HttpMethod.GET, requestEntity, new ParameterizedTypeReference<List<Order>>() {});
                 List<Order> orders = response.getBody();
                 return orders;
+                //
             } catch (HttpClientErrorException e) {
                 // Handle 401 Unauthorized response
                 Log.e("Orders 401!", e.getLocalizedMessage(), e);
                 //throw new RuntimeException(e.getLocalizedMessage());
             }
             catch (Exception e) {
-                Log.e("Orders exception!", e.getLocalizedMessage());
+                Log.e("Orders exception!", e.getLocalizedMessage(),e.getCause());
             }
-            return null;
+            return new ArrayList<>();
         }
 
         @Override

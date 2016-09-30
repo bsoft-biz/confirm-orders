@@ -1,7 +1,6 @@
 package biz.bsoft.confirmorders;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,7 @@ public final List<Order> objects;
 
 
 public OrdersListArrayAdapter(Context context, List<Order> objects) {
-        super(context, R.layout.list_items, objects);
+        super(context, R.layout.list_orders, objects);
         this.context = context;
         this.objects = objects;
         }
@@ -31,10 +30,16 @@ public OrdersListArrayAdapter(Context context, List<Order> objects) {
 @Override
 public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.list_items,parent,false);
-        TextView textView = (TextView) rowView.findViewById(R.id.label);
+        View rowView = inflater.inflate(R.layout.list_orders,parent,false);
+        TextView tvClient = (TextView) rowView.findViewById(R.id.client);
+        tvClient.setText(objects.get(position).getClient());
+        TextView tvClientPos = (TextView) rowView.findViewById(R.id.client_pos);
+        tvClientPos.setText(objects.get(position).getClientPos());
+        TextView tvRoute = (TextView) rowView.findViewById(R.id.route);
+        tvRoute.setText(objects.get(position).getRoute());
+        TextView tvShipDate = (TextView) rowView.findViewById(R.id.ship_date);
+        //tvShipDate.setText(objects.get(position).getShipDate().toString());
         CheckBox checkBox = (CheckBox) rowView.findViewById(R.id.cb_item);
-        textView.setText(objects.get(position).getClientPos());
         checkBox.setChecked(objects.get(position).isSelected());
         checkBox.setTag(objects.get(position));
         //Log.i("getView",objects.get(position).getClientPos());

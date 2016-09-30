@@ -1,5 +1,7 @@
 package biz.bsoft.confirmorders.model;
 
+import android.util.Log;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -28,6 +30,13 @@ public class Order {
     private Integer routeId;
 
     private boolean selected;
+
+    /*public Order() {}
+
+    public Order(String shipDate) {
+        //this.shipDate = shipDate;
+        Log.i("ORDER CONSTRUCTOR",shipDate);
+    }*/
 
     public Integer getId() {
         return Id;

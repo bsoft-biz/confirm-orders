@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -41,7 +43,7 @@ public class OrdersListActivity extends Activity implements LoadOrdersFragment.T
 
     @Override
     public void onPostExecute(List<Order> orders) {
-        Log.i("onPostExecute",((Integer) orders.size()).toString());
+        //Log.i("onPostExecute",((Integer) orders.size()).toString());
         loadList(orders);
     }
 
@@ -49,4 +51,24 @@ public class OrdersListActivity extends Activity implements LoadOrdersFragment.T
     public void onPreExecute() {
 
     }
-}
+    public void bShowSelectedClick(View button){
+        ListView listView = (ListView) findViewById(R.id.lv_items);
+        List<Order> itemList= ((OrdersListArrayAdapter)listView.getAdapter()).objects;
+
+        StringBuffer responseText = new StringBuffer();
+        responseText.append("The following were selected...\n");
+
+        //Item item = itemList.get(1);
+        //item.setSelected(true);
+        //responseText.append("\n" + item.getItemName());
+        for(int i=0;i<itemList.size();i++){
+            Order order = itemList.get(i);
+            //Log.i("bShowSelectedClick",item.getItemName());
+            if(order.isSelected()){
+                responseText.append("\n" + order.getClientPos());
+            }
+        }
+
+        Toast.makeText(getApplicationContext(),
+                responseText, Toast.LENGTH_LONG).show();
+    }}
