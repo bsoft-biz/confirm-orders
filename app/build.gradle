@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+
+    defaultConfig {
+        applicationId "biz.bsoft.confirmorders"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        pickFirst 'META-INF/license.txt'
+        pickFirst 'META-INF/notice.txt'
+    }
+}
+
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.android.support:design:24.2.0'
+    compile 'org.springframework.android:spring-android-rest-template:2.0.0.M3'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
+    compile 'com.android.support:support-v4:24.2.0'
+    compile 'org.joda:joda-convert:1.7'
+    compile 'joda-time:joda-time:2.7'
+}
+repositories {
+    maven {
+        url 'https://repo.spring.io/libs-milestone'
+    }
+}
+
