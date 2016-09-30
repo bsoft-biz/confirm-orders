@@ -1,11 +1,9 @@
 package biz.bsoft.confirmorders.model;
 
-import android.util.Log;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import org.joda.time.LocalDate;
+import java.util.Date;
 
 /**
  * Created by vbabin on 01.09.2016.
@@ -15,7 +13,7 @@ public class Order {
     private Integer Id;
 
     @JsonFormat(pattern="dd.MM.yyyy")
-    private LocalDate shipDate;
+    private Date shipDate;
 
     private String client;
 
@@ -46,11 +44,11 @@ public class Order {
         Id = id;
     }
 
-    public LocalDate getShipDate() {
+    public Date getShipDate() {
         return shipDate;
     }
 
-    public void setShipDate(LocalDate shipDate) {
+    public void setShipDate(Date shipDate) {
         this.shipDate = shipDate;
     }
 

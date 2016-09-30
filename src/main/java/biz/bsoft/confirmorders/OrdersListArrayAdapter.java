@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import biz.bsoft.confirmorders.model.Order;
@@ -38,7 +39,8 @@ public View getView(int position, View convertView, ViewGroup parent) {
         TextView tvRoute = (TextView) rowView.findViewById(R.id.route);
         tvRoute.setText(objects.get(position).getRoute());
         TextView tvShipDate = (TextView) rowView.findViewById(R.id.ship_date);
-        //tvShipDate.setText(objects.get(position).getShipDate().toString());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        tvShipDate.setText(simpleDateFormat.format(objects.get(position).getShipDate()));
         CheckBox checkBox = (CheckBox) rowView.findViewById(R.id.cb_item);
         checkBox.setChecked(objects.get(position).isSelected());
         checkBox.setTag(objects.get(position));
