@@ -6,17 +6,14 @@ import android.widget.TextView;
 
 import biz.bsoft.confirmorders.model.User;
 
-/**
- * Created by vbabin on 24.08.2016.
- */
-public class OrdersTask extends AsyncTask<Void, Void, User> {
+public class AuthTask extends AsyncTask<Void, Void, User> {
     Activity mainActivity;
-    public OrdersTask(Activity activity){
+    public AuthTask(Activity activity){
         super();
         mainActivity = activity;
     }
 
-    public OrdersTask(){
+    public AuthTask(){
         super();
     }
 

@@ -16,8 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Get Items"
-        android:id="@+id/b_items_get"
-        android:onClick="bItemsGetClick" />
+        android:id="@+id/b_items_get" />
 
     <Button
         android:layout_width="wrap_content"
@@ -26,6 +25,13 @@
         android:id="@+id/b_show_selected"
         android:layout_gravity="center_horizontal"
         android:onClick="bShowSelectedClick" />
+
+    <Button
+        android:text="Process orders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/b_process_orders"
+        android:onClick="bProcessOrdersClick" />
 
     <ListView
         android:layout_width="match_parent"
